@@ -14,7 +14,7 @@ interface Props {
 
 const { title, description, locale } = Astro.props;
 const pathname = Astro.url.pathname;
-const siteOrigin = Astro.site?.origin ?? "https://southstormmechanical.netlify.app";
+const siteOrigin = Astro.site?.origin ?? "https://southstorm-mechanical.netlify.app";
 
 const meta: PageMeta = { title, description, locale, pathname };
 const hreflangs = getHreflang(meta, siteOrigin);

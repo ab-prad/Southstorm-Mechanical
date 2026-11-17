@@ -3,9 +3,9 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
-// The final production domain is not confirmed yet. `site` seeds canonical and
-// hreflang URLs; replace it with the real Netlify custom domain at launch.
-const SITE = 'https://southstormmechanical.netlify.app';
+// `site` seeds canonical, hreflang and sitemap URLs. Netlify sets
+// PUBLIC_SITE_URL at build time; the fallback is the real Netlify subdomain.
+const SITE = process.env.PUBLIC_SITE_URL || 'https://southstorm-mechanical.netlify.app';
 
 export default defineConfig({
   site: SITE,
