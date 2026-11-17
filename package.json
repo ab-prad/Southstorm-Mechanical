@@ -16,9 +16,8 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
-    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/fraunces": "^5.3.0",
     "@fontsource-variable/manrope": "^5.3.0",
-    "@fontsource/barlow-condensed": "^5.3.0",
     "@tailwindcss/vite": "^4.3.1",
     "astro": "^6.4.6",
     "tailwindcss": "^4.3.1"
@@ -30,6 +29,9 @@
     "vitest": "^4.1.9"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp"]
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   }
 }

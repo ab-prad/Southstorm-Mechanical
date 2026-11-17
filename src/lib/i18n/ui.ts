@@ -45,6 +45,12 @@ export const ui = {
     "service.emergency.desc":
       "We show up on time when your climate system cannot wait.",
 
+    "callpanel.eyebrow": "Straight to the point",
+    "callpanel.title": "Your AC acting up? Let's talk.",
+    "callpanel.lead":
+      "No forms, no waiting. Call us and tell us what is going on with your home's climate system.",
+    "callpanel.numberLabel": "Call us directly",
+
     "faq.eyebrow": "Good to know",
     "faq.title": "Frequently asked questions",
     "faq.q1": "What services do you offer?",
@@ -125,6 +131,12 @@ export const ui = {
     "service.emergency.title": "Emergencias",
     "service.emergency.desc":
       "Acudimos en tiempo ante situaciones que no pueden esperar.",
+
+    "callpanel.eyebrow": "Sin rodeos",
+    "callpanel.title": "¿Tu aire no funciona? Hablemos.",
+    "callpanel.lead":
+      "Sin formularios ni esperas. Llámanos y cuéntanos qué le pasa al clima de tu casa.",
+    "callpanel.numberLabel": "Llámanos directo",
 
     "faq.eyebrow": "Conviene saberlo",
     "faq.title": "Preguntas frecuentes",

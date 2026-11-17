@@ -23,24 +23,23 @@ const items = [
     <div class="reveal">
       <Eyebrow>{t("faq.eyebrow", locale)}</Eyebrow>
       <SectionHeading>{t("faq.title", locale)}</SectionHeading>
-      <div class="hairline-accent mt-7"></div>
     </div>
 
-    <div class="mt-12 max-w-[820px] divide-y divide-navy-900/10">
+    <div class="mt-10 max-w-[860px] grid gap-3">
       {items.map((item, index) => (
-        <details class="reveal faq-item group" name="faq">
-          <summary class="flex items-center justify-between gap-6 py-6 cursor-pointer list-none marker:hidden">
-            <span class="flex items-start gap-5">
-              <span class="font-mono text-[12px] tracking-[0.14em] text-electric pt-1.5">
+        <details class="reveal faq-item group rounded-2xl bg-white border border-navy-900/5 shadow-sm" name="faq">
+          <summary class="flex items-center justify-between gap-6 px-6 py-5 cursor-pointer list-none marker:hidden">
+            <span class="flex items-start gap-4">
+              <span class="soft-chip !text-[12px] !bg-accent/10 !text-accent pt-1.5">
                 0{index + 1}
               </span>
-              <span class="font-display text-[22px] md:text-[26px] uppercase leading-tight text-navy-900">
+              <span class="font-display text-[19px] md:text-[21px] leading-snug text-navy-900">
                 {item.q}
               </span>
             </span>
-            <span class="faq-icon shrink-0 w-9 h-9 border border-navy-900/25 text-navy-900 flex items-center justify-center font-mono text-lg transition-colors group-open:bg-navy-900 group-open:text-white group-open:border-navy-900" aria-hidden="true">+</span>
+            <span class="faq-icon shrink-0 w-9 h-9 rounded-full bg-surface flex items-center justify-center text-[20px] text-navy-900 transition-colors group-open:bg-navy-900 group-open:text-white" aria-hidden="true">+</span>
           </summary>
-          <p class="pl-[2.6rem] pr-10 pb-7 text-[15px] leading-relaxed text-slate-ink max-w-[65ch]">
+          <p class="px-6 pb-6 pl-[4.6rem] text-[15px] leading-relaxed text-slate-ink max-w-[65ch]">
             {item.a}
           </p>
         </details>

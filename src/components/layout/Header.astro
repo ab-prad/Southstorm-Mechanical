@@ -20,9 +20,9 @@ const navLinks = [
 ];
 ---
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-navy-900/10">
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-navy-900/5">
   <div class="wrap grid grid-cols-[auto_1fr_auto] items-center gap-4 py-3">
-    <a href={home} class="flex items-center gap-3" aria-label="Southstorm Mechanical">
+    <a href={home} class="flex items-center" aria-label="Southstorm Mechanical">
       <img src="/logo.png" alt="" width="118" height="30" class="h-[34px] w-auto" />
     </a>
 
@@ -30,7 +30,7 @@ const navLinks = [
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="font-mono text-[11px] tracking-[0.14em] uppercase text-navy-900/70 hover:text-electric transition-colors"
+          class="text-[15px] font-semibold text-navy-900/70 hover:text-accent transition-colors"
         >
           {link.label}
         </a>
@@ -42,20 +42,20 @@ const navLinks = [
         href={altPath}
         onclick={`localStorage.setItem('preferredLocale','${otherLocale}')`}
         aria-label={langSwapAria}
-        class="font-mono text-[11px] tracking-[0.1em] uppercase px-2.5 py-2 rounded border border-navy-900/25 text-navy-900 hover:bg-white transition-colors"
+        class="text-[13px] font-bold px-3.5 py-2 rounded-full border border-navy-900/15 text-navy-900 hover:bg-surface transition-colors"
       >
         {otherLabel}
       </a>
       <a
         href="tel:+15617884360"
-        class="btn btn--primary hidden sm:inline-flex !py-2.5 !px-4"
+        class="btn btn--primary hidden sm:inline-flex !py-2 !px-4 !text-[13px]"
       >
         {t("nav.call", locale)}
       </a>
       <button
         id="mobile-menu-toggle"
         type="button"
-        class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded border border-navy-900/25 text-navy-900"
+        class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-full border border-navy-900/15 text-navy-900"
         aria-expanded="false"
         aria-controls="mobile-menu"
         aria-label={t("nav.menu", locale)}
@@ -72,12 +72,12 @@ const navLinks = [
     </div>
   </div>
 
-  <div id="mobile-menu" class="mobile-menu md:hidden border-t border-navy-900/10 bg-white" hidden>
+  <div id="mobile-menu" class="mobile-menu md:hidden border-t border-navy-900/5 bg-white" hidden>
     <nav class="wrap py-4 flex flex-col">
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="mobile-nav-link flex items-center min-h-[48px] px-1 text-navy-900 border-b border-navy-900/10 font-display text-[22px] uppercase"
+          class="mobile-nav-link flex items-center min-h-[48px] px-1 text-navy-900 border-b border-navy-900/5 font-display text-[22px]"
         >
           {link.label}
         </a>
@@ -88,3 +88,35 @@ const navLinks = [
     </nav>
   </div>
 </header>
+
+<script>
+  function bindMobileMenu() {
+    const btn = document.getElementById("mobile-menu-toggle");
+    const panel = document.getElementById("mobile-menu");
+    if (!btn || panel?.dataset.bound === "true") return;
+    if (!panel) return;
+    panel.dataset.bound = "true";
+
+    const bars = btn.querySelector<HTMLElement>(".icon-bars");
+    const close = btn.querySelector<HTMLElement>(".icon-close");
+    const openLabel = btn.dataset.openLabel ?? "Menu";
+    const closeLabel = btn.dataset.closeLabel ?? "Close menu";
+
+    const setOpen = (open: boolean) => {
+      btn.setAttribute("aria-expanded", String(open));
+      btn.setAttribute("aria-label", open ? closeLabel : openLabel);
+      bars?.classList.toggle("hidden", open);
+      close?.classList.toggle("hidden", !open);
+      panel.toggleAttribute("hidden", !open);
+      document.body.style.overflow = open ? "hidden" : "";
+    };
+
+    btn.addEventListener("click", () => setOpen(btn.getAttribute("aria-expanded") !== "true"));
+    panel.addEventListener("click", (e) => {
+      if ((e.target as HTMLElement).closest("a")) setOpen(false);
+    });
+  }
+
+  document.addEventListener("astro:page-load", bindMobileMenu);
+  if (document.readyState !== "loading") bindMobileMenu();
+</script>

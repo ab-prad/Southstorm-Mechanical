@@ -33,31 +33,30 @@ const services = [
 
 <section id="services" class="section-pad bg-paper">
   <div class="wrap">
-    <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-4">
       <div>
         <Eyebrow>{t("services.eyebrow", locale)}</Eyebrow>
         <SectionHeading>{t("services.title", locale)}</SectionHeading>
       </div>
-      <p class="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-muted">
+      <p class="text-[14px] text-slate-muted">
         {t("trust.area", locale)}
       </p>
     </div>
 
-    <div class="mt-12 grid gap-5 md:grid-cols-3">
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
       {services.map((service) => (
-        <article class="reveal service-card group relative bg-white border border-navy-900/10 p-8 pt-10 min-h-[300px] flex flex-col overflow-hidden">
-          <span class="font-mono text-[12px] tracking-[0.16em] text-electric">
+        <article class="reveal service-card group relative rounded-3xl border border-navy-900/5 bg-white p-8 pt-9 min-h-[290px] flex flex-col shadow-md shadow-navy-900/5 transition-shadow hover:shadow-xl hover:shadow-navy-900/10">
+          <span class="soft-chip !text-[12px] !bg-accent/10 !text-accent self-start">
             {service.num}
           </span>
-          <div class="absolute top-0 left-0 h-[3px] w-0 bg-electric transition-all duration-300 group-hover:w-full" aria-hidden="true"></div>
-          <h3 class="text-[38px] mt-6 text-navy-900">
+          <h3 class="text-[28px] mt-6 text-navy-900">
             {service.title}
           </h3>
-          <p class="mt-5 text-[15px] leading-relaxed text-slate-ink">
+          <p class="mt-4 text-[15px] leading-relaxed text-slate-ink">
             {service.desc}
           </p>
           <div class="mt-auto pt-8">
-            <span class="font-mono text-[11px] tracking-[0.14em] uppercase text-slate-muted group-hover:text-electric transition-colors">
+            <span class="text-[13px] font-semibold text-slate-muted group-hover:text-accent transition-colors">
               + {t("nav.call", locale)}
             </span>
           </div>
