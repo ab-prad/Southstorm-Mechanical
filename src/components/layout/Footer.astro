@@ -11,36 +11,31 @@ const home = localizeUrl("/", locale);
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-navy-950 text-white border-t border-white/10">
+<footer class="bg-surface border-t-4 border-navy-900">
   <div class="wrap py-14 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
     <div>
-      <div class="flex items-center gap-3">
-        <img src="/logo.png" alt="" width="40" height="40" class="h-10 w-auto" />
-        <span class="font-display text-[20px] font-bold uppercase tracking-[0.06em] leading-none">
-          Southstorm<br /><span class="text-electric-soft">Mechanical</span>
-        </span>
-      </div>
-      <p class="font-display text-[24px] uppercase mt-5 max-w-[22ch] leading-tight">
+      <img src="/logo.png" alt="Southstorm Mechanical" width="170" height="41" class="h-[54px] w-auto" />
+      <p class="font-display text-[24px] uppercase mt-5 max-w-[22ch] leading-tight text-navy-900">
         {t("footer.tagline", locale)}
       </p>
-      <p class="font-mono text-[11px] tracking-[0.12em] uppercase text-white/50 mt-4">
+      <p class="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-muted mt-4">
         {t("footer.services", locale)}
       </p>
     </div>
 
     <div>
-      <h3 class="font-mono text-[11px] tracking-[0.16em] uppercase text-electric-soft mb-4">Contact</h3>
-      <ul class="space-y-3 text-[15px] text-white/75">
+      <h3 class="font-mono text-[11px] tracking-[0.16em] uppercase text-electric mb-4">Contact</h3>
+      <ul class="space-y-3 text-[15px] text-slate-ink">
         <li>
-          <a href="tel:+15617884360" class="hover:text-white transition-colors">561-788-4360</a>
+          <a href="tel:+15617884360" class="hover:text-electric transition-colors">561-788-4360</a>
         </li>
         <li>
-          <a href="mailto:support@southstormmechanical.com" class="hover:text-white transition-colors">
+          <a href="mailto:support@southstormmechanical.com" class="hover:text-electric transition-colors">
             support@southstormmechanical.com
           </a>
         </li>
         <li>
-          <a href="https://wa.me/+15617884360" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+          <a href="https://wa.me/+15617884360" target="_blank" rel="noopener noreferrer" class="hover:text-electric transition-colors">
             WhatsApp
           </a>
         </li>
@@ -48,16 +43,16 @@ const year = new Date().getFullYear();
     </div>
 
     <div>
-      <h3 class="font-mono text-[11px] tracking-[0.16em] uppercase text-electric-soft mb-4">Links</h3>
-      <ul class="space-y-3 text-[15px] text-white/75">
-        <li><a href={`${home}#services`} class="hover:text-white transition-colors">{t("nav.services", locale)}</a></li>
-        <li><a href={`${home}#faq`} class="hover:text-white transition-colors">{t("nav.faq", locale)}</a></li>
+      <h3 class="font-mono text-[11px] tracking-[0.16em] uppercase text-electric mb-4">Links</h3>
+      <ul class="space-y-3 text-[15px] text-slate-ink">
+        <li><a href={`${home}#services`} class="hover:text-electric transition-colors">{t("nav.services", locale)}</a></li>
+        <li><a href={`${home}#faq`} class="hover:text-electric transition-colors">{t("nav.faq", locale)}</a></li>
         <li>
           <a
             href="https://client.housecallpro.com/customer_portal/request-link?token=b2911794837248609d94e7f920f695b5"
             target="_blank"
             rel="noopener noreferrer"
-            class="hover:text-white transition-colors"
+            class="hover:text-electric transition-colors"
           >
             {t("nav.portal", locale)}
           </a>
@@ -66,8 +61,8 @@ const year = new Date().getFullYear();
     </div>
   </div>
 
-  <div class="border-t border-white/10">
-    <div class="wrap py-5 flex flex-col sm:flex-row gap-2 justify-between font-mono text-[11px] tracking-[0.1em] uppercase text-white/40">
+  <div class="border-t border-navy-900/10">
+    <div class="wrap py-5 flex flex-col sm:flex-row gap-2 justify-between font-mono text-[11px] tracking-[0.1em] uppercase text-slate-muted">
       <span>© {year} Southstorm Mechanical. {t("footer.rights", locale)}</span>
       <span>{t("trust.spanish", locale)} · {t("footer.built", locale)}</span>
     </div>

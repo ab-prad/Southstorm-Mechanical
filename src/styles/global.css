@@ -7,23 +7,24 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand surfaces — navy dominant, off-white content, slate neutrals */
+  /* Brand: white-first. Navy is an accent, never a full-section background. */
+  --color-paper: #ffffff;
+  --color-white: #ffffff;
+  --color-surface: #f7f8fa;
+  --color-surface-deep: #eef2f7;
+
   --color-navy-950: #071124;
   --color-navy-900: #0b1b33;
   --color-navy-800: #11264a;
   --color-navy-700: #1a3563;
   --color-slate-ink: #3d4a5f;
   --color-slate-muted: #64748b;
-  --color-paper: #f4f6f8;
-  --color-paper-dim: #e8ecf1;
-  --color-white: #ffffff;
 
-  /* Electric-blue action accent */
+  /* Electric blue is a restrained action accent (buttons, micro-details). */
   --color-electric: #2f6bff;
   --color-electric-deep: #1b4fd8;
   --color-electric-soft: #6f9bff;
 
-  /* Typography */
   --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
   --font-body: "Manrope Variable", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
@@ -48,7 +49,7 @@
   }
 
   ::selection {
-    background-color: var(--color-electric);
+    background-color: var(--color-navy-900);
     color: var(--color-white);
   }
 
@@ -64,7 +65,7 @@
   h3 { font-weight: 600; }
 
   :focus-visible {
-    outline: 3px solid var(--color-electric-soft);
+    outline: 3px solid var(--color-electric);
     outline-offset: 3px;
   }
 }
@@ -136,12 +137,23 @@
     background-color: var(--color-electric);
     color: var(--color-white);
     padding: 0.95rem 1.6rem;
-    box-shadow: 0 8px 24px -10px rgba(47, 107, 255, 0.7);
+    box-shadow: 0 8px 24px -10px rgba(47, 107, 255, 0.55);
   }
 
   .btn--primary:hover {
     background-color: var(--color-electric-deep);
-    box-shadow: 0 12px 30px -10px rgba(47, 107, 255, 0.85);
+    box-shadow: 0 12px 30px -10px rgba(47, 107, 255, 0.7);
+    transform: translateY(-2px);
+  }
+
+  .btn--navy {
+    background-color: var(--color-navy-900);
+    color: var(--color-white);
+    padding: 0.95rem 1.6rem;
+  }
+
+  .btn--navy:hover {
+    background-color: var(--color-navy-800);
     transform: translateY(-2px);
   }
 
@@ -152,12 +164,7 @@
   }
 
   .btn--ghost:hover {
-    background-color: rgba(255, 255, 255, 0.08);
-  }
-
-  .btn--ghost-dark:hover {
-    background-color: var(--color-navy-900);
-    color: var(--color-white);
+    background-color: var(--color-surface-deep);
   }
 
   .field-label {
@@ -170,7 +177,7 @@
 
   .field-input {
     width: 100%;
-    border: 1px solid #cbd5e1;
+    border: 1px solid #d8d2c6;
     border-radius: 4px;
     background-color: var(--color-white);
     padding: 0.8rem 0.9rem;
@@ -183,7 +190,7 @@
   .field-input:focus {
     outline: none;
     border-color: var(--color-electric);
-    box-shadow: 0 0 0 3px rgba(47, 107, 255, 0.18);
+    box-shadow: 0 0 0 3px rgba(47, 107, 255, 0.16);
   }
 
   .field-input::placeholder { color: #94a3b8; }
@@ -197,11 +204,11 @@
   }
 }
 
-/* Technical grid atmosphere for dark sections. */
+/* Kept for small navy accent panels only; never a full-section background. */
 .tech-grid {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 46px 46px;
   background-position: center top;
 }
@@ -212,7 +219,6 @@
   background: var(--color-electric);
 }
 
-/* Reveal-on-scroll: progressive enhancement. Elements are visible by default. */
 .reveal {
   opacity: 1;
   transform: none;

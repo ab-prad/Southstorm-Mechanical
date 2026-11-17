@@ -12,7 +12,7 @@ const { locale } = Astro.props;
 const thanksPath = localizeUrl("/thanks/", locale);
 ---
 
-<section id="contact" class="section-pad bg-paper-dim">
+<section id="contact" class="section-pad bg-surface">
   <div class="wrap grid gap-12 lg:grid-cols-[0.85fr_1.15fr] items-start">
     <div class="reveal">
       <Eyebrow>{t("form.eyebrow", locale)}</Eyebrow>
@@ -39,7 +39,7 @@ const thanksPath = localizeUrl("/thanks/", locale);
       </div>
     </div>
 
-    <div class="reveal bg-white border border-paper-dim p-8 md:p-10">
+    <div class="reveal bg-white border border-navy-900/10 p-8 md:p-10">
       <!-- Netlify Forms is enabled with `data-netlify`. `form-name` is rendered
            into the static HTML at build so both locales register the same form. -->
       <form

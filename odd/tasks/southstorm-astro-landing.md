@@ -7,7 +7,8 @@ Replace the Squarespace site with a self-owned Astro landing page hosted on Netl
 The owner does not want to keep paying for / rely on Squarespace. The current site content is a partially wrong template: the "Repair" and "Maintenance" descriptions are swapped, one FAQ answer is empty, and the copy does not reflect the confirmed brand (gray + navy, call-first, residential HVAC in South Florida). Moving to a static Astro build on Netlify removes the CMS dependency and enables i18n and a native form.
 
 ## Decisions (approved by owner 2026-11-17)
-- **Fidelity:** same sections and content, own design ("Precision Industrial": navy #0B1B33 dominant, slate gray, off-white #F4F6F8, electric-blue accent #2F6BFF; Barlow Condensed display + Manrope body + JetBrains Mono labels).
+- **Fidelity:** same sections and content, own design. Palette corrected twice by the owner: first away from navy-dominant, then from beige to **white-first**. Final palette: white #FFFFFF base, light gray #F7F8FA for alternate sections, navy #0B1B33 only for headings/badges/accents (never a full-section background), electric blue #2F6BFF only for buttons and micro-details. Type: Barlow Condensed display + Manrope body + JetBrains Mono labels.
+- **Logo constraint:** `logo.png` is navy on transparent and must sit on light backgrounds. `logo-full.png` is white and is now unused (no dark sections remain); both header and footer use `logo.png`.
 - **Languages:** full ES + EN with a language selector (same i18n pattern as the portfolio). Default locale `en` at `/`, Spanish at `/es/`.
 - **Form:** Netlify Forms + email notification to `support@southstormmechanical.com`. Keep the 4 existing fields (Nombre, Apellido, Correo, Mensaje).
 - **Approach:** Option 1 — static Astro + Tailwind 4 (Vite plugin) + i18n dictionary + Netlify Forms. No SSR adapter.
@@ -51,6 +52,7 @@ The owner does not want to keep paying for / rely on Squarespace. The current si
 - 2026-11-17: TDD on i18n — RED observed (2 test files failed, modules missing), GREEN with 10 passing tests, then REFACTOR (derived key parity from the dictionary itself).
 - 2026-11-17: Verification evidence — `pnpm check` 0 errors, `pnpm test` 10/10, `pnpm build` 5 pages + sitemap. Built HTML checked via UTF-8 reads: form-name, tel:+15617884360, hreflang en/es, HVACBusiness JSON-LD, corrected service descriptions and all FAQ answers present in both locales. Static serve smoke test: `/` and `/es/` both HTTP 200.
 - 2026-11-17: Five work-unit commits on `feat/astro-landing`; working tree clean. RDD review not run (CLI blocked); delivery/push/PR remain the owner's decision.
+- 2026-11-17: Palette correction (owner feedback, two rounds). Sampled logos with canvas: `logo.png` = #001D3C navy on transparent, `logo-full.png` = #fefefe white. Original design had the navy logo on a navy header and navy-dominant sections. First pass moved to warm beige; owner then chose white and no full-navy blocks. Final: white-first tokens (`--color-paper`, `--color-surface` #F7F8FA), navy headings/accents only, light footer with `logo.png`, electric blue limited to buttons and 3px details. Verified via computed styles in the browser: header/hero/services/FAQ white, trust bar/contact/footer #F7F8FA, headings navy, no navy section backgrounds in either locale. `pnpm check` 0 errors, `pnpm test` 10/10, `pnpm build` 5 pages.
 
 ## Outstanding before launch
 - Confirm the production domain and replace `SITE` in `astro.config.mjs` (current placeholder: southstormmechanical.netlify.app).

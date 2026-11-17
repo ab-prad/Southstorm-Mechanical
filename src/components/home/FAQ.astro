@@ -18,29 +18,29 @@ const items = [
 ];
 ---
 
-<section id="faq" class="section-pad bg-navy-900 text-white tech-grid">
+<section id="faq" class="section-pad bg-paper">
   <div class="wrap relative">
     <div class="reveal">
-      <Eyebrow class="!text-electric-soft">{t("faq.eyebrow", locale)}</Eyebrow>
+      <Eyebrow>{t("faq.eyebrow", locale)}</Eyebrow>
       <SectionHeading>{t("faq.title", locale)}</SectionHeading>
       <div class="hairline-accent mt-7"></div>
     </div>
 
-    <div class="mt-12 max-w-[820px] divide-y divide-white/15">
+    <div class="mt-12 max-w-[820px] divide-y divide-navy-900/10">
       {items.map((item, index) => (
         <details class="reveal faq-item group" name="faq">
           <summary class="flex items-center justify-between gap-6 py-6 cursor-pointer list-none marker:hidden">
             <span class="flex items-start gap-5">
-              <span class="font-mono text-[12px] tracking-[0.14em] text-electric-soft pt-1.5">
+              <span class="font-mono text-[12px] tracking-[0.14em] text-electric pt-1.5">
                 0{index + 1}
               </span>
-              <span class="font-display text-[22px] md:text-[26px] uppercase leading-tight">
+              <span class="font-display text-[22px] md:text-[26px] uppercase leading-tight text-navy-900">
                 {item.q}
               </span>
             </span>
-            <span class="faq-icon shrink-0 w-9 h-9 border border-white/25 flex items-center justify-center font-mono text-lg transition-colors group-open:bg-electric group-open:border-electric" aria-hidden="true">+</span>
+            <span class="faq-icon shrink-0 w-9 h-9 border border-navy-900/25 text-navy-900 flex items-center justify-center font-mono text-lg transition-colors group-open:bg-navy-900 group-open:text-white group-open:border-navy-900" aria-hidden="true">+</span>
           </summary>
-          <p class="pl-[2.6rem] pr-10 pb-7 text-[15px] leading-relaxed text-white/70 max-w-[65ch]">
+          <p class="pl-[2.6rem] pr-10 pb-7 text-[15px] leading-relaxed text-slate-ink max-w-[65ch]">
             {item.a}
           </p>
         </details>
