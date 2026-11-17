@@ -4,7 +4,7 @@
  * color, so they follow hover/focus states without extra CSS.
  */
 interface Props {
-  name: "phone" | "mail" | "whatsapp";
+  name: "phone" | "mail" | "whatsapp" | "check";
   size?: number;
   class?: string;
 }
@@ -49,6 +49,26 @@ const { name, size = 18, class: className = "" } = Astro.props;
     >
       <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" />
       <path d="m3 6.5 9 6.5 9-6.5" />
+    </svg>
+  )
+}
+
+{
+  name === "check" && (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width={2.2}
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class:list={["shrink-0", className]}
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="m5 12.5 4.5 4.5L19 7" />
     </svg>
   )
 }
