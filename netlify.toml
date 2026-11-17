@@ -1,0 +1,30 @@
+[build]
+  command = "pnpm build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Netlify Forms parses the built static HTML at deploy time. The contact form
+# lives in both / and /es/; `form-name` is rendered in the HTML so both are
+# detected as the same form. Set NOTIFICATION_EMAIL in the Netlify UI, or
+# edit the `data-netlify` email attribute in ContactForm.astro.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from = "/gracias"
+  to = "/thanks/"
+  status = 301
+
+[[redirects]]
+  from = "/es/gracias"
+  to = "/es/thanks/"
+  status = 301
+
+# Netlify Forms only detects forms present in built static HTML. Both locales
+# render the form with name="proposal", so submissions land in one form view.
