@@ -1,6 +1,7 @@
 ---
 import { t } from "../../lib/i18n/ui";
 import type { Locale } from "../../lib/i18n/routing";
+import Icon from "../ui/Icon.astro";
 
 interface Props {
   locale: Locale;
@@ -15,11 +16,11 @@ const { locale } = Astro.props;
          navy, so it stays on light surfaces; here only type sits on navy. -->
     <div class="reveal relative overflow-hidden rounded-[28px] bg-navy-900 px-7 py-12 md:px-14 md:py-16 text-white">
       <div class="absolute -right-16 -top-16 w-72 h-72 rounded-full border border-white/10" aria-hidden="true"></div>
-      <div class="absolute -right-4 -top-4 w-40 h-40 rounded-full border border-accent-soft/30" aria-hidden="true"></div>
+      <div class="absolute -right-4 -top-4 w-40 h-40 rounded-full border border-white/5" aria-hidden="true"></div>
 
       <div class="relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
         <div>
-          <p class="eyebrow text-accent-soft">{t("callpanel.eyebrow", locale)}</p>
+          <p class="eyebrow text-accent-soft-light">{t("callpanel.eyebrow", locale)}</p>
           <h2 class="mt-4 text-[clamp(2rem,4.4vw,3rem)] max-w-[18ch] leading-tight">
             {t("callpanel.title", locale)}
           </h2>
@@ -29,20 +30,23 @@ const { locale } = Astro.props;
         </div>
 
         <div class="lg:text-right">
-          <p class="text-[13px] font-bold uppercase tracking-wide text-accent-soft">
+          <p class="flex items-center gap-2 text-[13px] font-bold uppercase tracking-wide text-accent-soft-light lg:justify-end">
+            <Icon name="phone" size={15} />
             {t("callpanel.numberLabel", locale)}
           </p>
           <a
             href="tel:+15617884360"
-            class="font-display text-[clamp(2.4rem,6vw,3.6rem)] leading-none mt-2 inline-block text-white hover:text-accent-soft transition-colors"
+            class="font-display text-[clamp(2.4rem,6vw,3.6rem)] leading-none mt-2 inline-block text-white hover:text-white/80 transition-colors"
           >
             561-788-4360
           </a>
-          <p class="mt-4 text-[15px] font-semibold text-white/90">
+          <p class="mt-4 flex items-center gap-2 text-[15px] font-semibold text-white/90 lg:justify-end">
+            <Icon name="whatsapp" size={17} class="text-accent-soft-light" />
             {t("trust.spanish", locale)}
           </p>
           <div class="mt-6 flex flex-wrap gap-3 lg:justify-end">
-            <a href="tel:+15617884360" class="btn btn--primary">
+            <a href="tel:+15617884360" class="btn !bg-white !text-navy-900 hover:!bg-white/90">
+              <Icon name="phone" size={16} />
               {t("hero.cta.call", locale)}
             </a>
             <a
@@ -51,6 +55,7 @@ const { locale } = Astro.props;
               rel="noopener noreferrer"
               class="btn !bg-white/10 !text-white hover:!bg-white/20"
             >
+              <Icon name="whatsapp" size={16} />
               WhatsApp
             </a>
           </div>
