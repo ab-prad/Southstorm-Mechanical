@@ -1,0 +1,67 @@
+---
+import "../../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+import LangDetect from "./LangDetect.astro";
+import JsonLd from "../seo/JsonLd.astro";
+import { getHreflang, type PageMeta } from "../../lib/seo/meta";
+import type { Locale } from "../../lib/i18n/routing";
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+}
+
+const { title, description, locale } = Astro.props;
+const pathname = Astro.url.pathname;
+const siteOrigin = Astro.site?.origin ?? "https://southstormmechanical.netlify.app";
+
+const meta: PageMeta = { title, description, locale, pathname };
+const hreflangs = getHreflang(meta, siteOrigin);
+const canonical = `${siteOrigin}${pathname}`;
+const ogImage = `${siteOrigin}/og-image.png`;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+{hreflangs.map((h) => <link rel="alternate" hreflang={h.hreflang} href={h.href} />)}
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={locale === "en" ? "en_US" : "es_ES"} />
+<meta property="og:locale:alternate" content={locale === "en" ? "es_ES" : "en_US"} />
+<meta property="og:site_name" content="Southstorm Mechanical" />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Southstorm Mechanical — Residential HVAC" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<JsonLd graph={{
+  "@context": "https://schema.org",
+  "@type": "HVACBusiness",
+  name: "Southstorm Mechanical",
+  description,
+  telephone: "+1-561-788-4360",
+  email: "support@southstormmechanical.com",
+  url: siteOrigin,
+  areaServed: { "@type": "State", name: "Florida" },
+  availableLanguage: ["en", "es"],
+}} />
+
+<LangDetect />
+<ClientRouter />
