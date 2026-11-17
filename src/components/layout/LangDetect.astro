@@ -1,0 +1,46 @@
+---
+// Inlined into <head>. Runs before paint. Pure DOM, no Astro hydration.
+---
+
+<script is:inline>
+  (function () {
+    try {
+      var STORAGE_KEY = "preferredLocale";
+      var current = location.pathname.startsWith("/es/") || location.pathname === "/es"
+        ? "es"
+        : "en";
+
+      var stored = localStorage.getItem(STORAGE_KEY);
+
+      if (stored && stored !== current && (stored === "en" || stored === "es")) {
+        if (stored === "es" && current === "en") {
+          var esPath = location.pathname === "/" ? "/es/" : "/es" + location.pathname;
+          location.replace(esPath + location.search + location.hash);
+          return;
+        }
+        if (stored === "en" && current === "es") {
+          var enPath = location.pathname.replace(/^\/es\/?/, "/") || "/";
+          location.replace(enPath + location.search + location.hash);
+          return;
+        }
+      }
+
+      if (!stored && current === "en") {
+        var browser = (navigator.language || "").toLowerCase();
+        if (browser.startsWith("es")) {
+          var detectedPath = location.pathname === "/" ? "/es/" : "/es" + location.pathname;
+          localStorage.setItem(STORAGE_KEY, "es");
+          location.replace(detectedPath + location.search + location.hash);
+          return;
+        }
+        localStorage.setItem(STORAGE_KEY, "en");
+      }
+
+      if (!stored && current === "es") {
+        localStorage.setItem(STORAGE_KEY, "es");
+      }
+    } catch (e) {
+      /* localStorage unavailable, skip detection silently */
+    }
+  })();
+</script>
