@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import { t } from "../lib/i18n/ui";
+import { localizeUrl } from "../lib/i18n/routing";
+
+export const prerender = true;
+
+const locale = "en" as const;
+const home = localizeUrl("/", locale);
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${t("thanks.title", locale)} | Southstorm Mechanical`}
+  description={t("thanks.lead", locale)}
+>
+  <section class="section-pad bg-navy-950 text-white tech-grid min-h-[60vh] flex items-center">
+    <div class="wrap text-center max-w-[720px]">
+      <p class="eyebrow text-electric-soft justify-center">✓</p>
+      <h1 class="text-[clamp(2.8rem,7vw,5rem)] mt-6">{t("thanks.title", locale)}</h1>
+      <div class="hairline-accent mx-auto mt-7"></div>
+      <p class="mt-7 text-[18px] text-white/75">{t("thanks.lead", locale)}</p>
+      <a href={home} class="btn btn--primary mt-10">{t("thanks.home", locale)}</a>
+    </div>
+  </section>
+</BaseLayout>

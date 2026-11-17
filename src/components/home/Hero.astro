@@ -1,0 +1,65 @@
+---
+import { t } from "../../lib/i18n/ui";
+import type { Locale } from "../../lib/i18n/routing";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-navy-950 text-white tech-grid">
+  <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900/95 to-navy-800/70"></div>
+  <div class="absolute -top-32 -right-24 w-[520px] h-[520px] rounded-full bg-electric/10 blur-[100px]" aria-hidden="true"></div>
+
+  <div class="wrap relative py-24 md:py-32 grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
+    <div class="reveal">
+      <p class="eyebrow text-electric-soft">{t("hero.eyebrow", locale)}</p>
+      <h1 class="text-[clamp(3rem,7vw,5.6rem)] mt-6 max-w-[15ch]">
+        {t("hero.title", locale)}
+      </h1>
+      <div class="hairline-accent mt-8"></div>
+      <p class="mt-7 text-[18px] leading-relaxed text-white/75 max-w-[52ch]">
+        {t("hero.lead", locale)}
+      </p>
+      <p class="mt-5 inline-flex items-center gap-2 font-mono text-[12px] tracking-[0.05em] text-electric-soft border border-electric/40 bg-electric/10 px-3.5 py-2">
+        <span aria-hidden="true">◆</span>
+        {t("hero.promo", locale)}
+      </p>
+
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="tel:+15617884360" class="btn btn--primary">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"></path>
+          </svg>
+          {t("hero.cta.call", locale)}
+        </a>
+        <a
+          href="https://book.housecallpro.com/book/SOUTHSTORM-MECHANICAL/2c320fb8d05a42a883a7b66c0c48a7c5?v2=true"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn--ghost text-white"
+        >
+          {t("hero.cta.book", locale)}
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal relative" style="animation-delay: 120ms">
+      <div class="relative border border-white/15 bg-navy-900/60 p-3 backdrop-blur-sm">
+        <img
+          src="/hero-hvac.jpg"
+          alt={t("hero.imageAlt", locale)}
+          width="1200"
+          height="900"
+          class="w-full h-[340px] md:h-[440px] object-cover"
+        />
+        <div class="absolute -bottom-5 -left-5 bg-electric text-white font-mono text-[11px] tracking-[0.14em] uppercase px-5 py-3">
+          561-788-4360
+        </div>
+      </div>
+      <div class="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-electric/70" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>

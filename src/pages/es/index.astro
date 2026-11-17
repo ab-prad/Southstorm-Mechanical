@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import Hero from "../../components/home/Hero.astro";
+import TrustBar from "../../components/home/TrustBar.astro";
+import Services from "../../components/home/Services.astro";
+import FAQ from "../../components/home/FAQ.astro";
+import ContactForm from "../../components/home/ContactForm.astro";
+import { t } from "../../lib/i18n/ui";
+
+const locale = "es" as const;
+---
+
+<BaseLayout
+  locale={locale}
+  title={t("meta.title", locale)}
+  description={t("meta.description", locale)}
+>
+  <Hero locale={locale} />
+  <TrustBar locale={locale} />
+  <Services locale={locale} />
+  <FAQ locale={locale} />
+  <ContactForm locale={locale} />
+</BaseLayout>

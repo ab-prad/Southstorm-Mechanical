@@ -1,0 +1,102 @@
+---
+import { t } from "../../lib/i18n/ui";
+import Eyebrow from "../ui/Eyebrow.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import { localizeUrl, type Locale } from "../../lib/i18n/routing";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const thanksPath = localizeUrl("/thanks/", locale);
+---
+
+<section id="contact" class="section-pad bg-paper-dim">
+  <div class="wrap grid gap-12 lg:grid-cols-[0.85fr_1.15fr] items-start">
+    <div class="reveal">
+      <Eyebrow>{t("form.eyebrow", locale)}</Eyebrow>
+      <SectionHeading>{t("form.title", locale)}</SectionHeading>
+      <p class="mt-6 text-[16px] leading-relaxed text-slate-ink max-w-[46ch]">
+        {t("form.lead", locale)}
+      </p>
+
+      <div class="mt-10 border-l-2 border-electric pl-5">
+        <a href="tel:+15617884360" class="font-display text-[34px] uppercase text-navy-900 hover:text-electric transition-colors">
+          561-788-4360
+        </a>
+        <p class="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-muted mt-2">
+          {t("nav.call", locale)}
+        </p>
+        <a
+          href="https://wa.me/+15617884360"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 mt-5 text-[15px] font-semibold text-electric hover:text-electric-deep transition-colors"
+        >
+          WhatsApp · +1 561 788 4360
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal bg-white border border-paper-dim p-8 md:p-10">
+      <!-- Netlify Forms is enabled with `data-netlify`. `form-name` is rendered
+           into the static HTML at build so both locales register the same form. -->
+      <form
+        name="proposal"
+        method="POST"
+        action={thanksPath}
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="proposal" />
+
+        <p class="honeypot" aria-hidden="true">
+          <label>{t("form.honeypot", locale)}
+            <input type="text" name="bot-field" tabindex="-1" autocomplete="off" />
+          </label>
+        </p>
+
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label class="field-label" for="firstName">
+              {t("form.firstName", locale)} <span class="text-electric">*</span>
+              <span class="font-normal text-slate-muted">({t("form.required", locale)})</span>
+            </label>
+            <input class="field-input" id="firstName" name="firstName" type="text" autocomplete="given-name" required />
+          </div>
+          <div>
+            <label class="field-label" for="lastName">
+              {t("form.lastName", locale)} <span class="text-electric">*</span>
+              <span class="font-normal text-slate-muted">({t("form.required", locale)})</span>
+            </label>
+            <input class="field-input" id="lastName" name="lastName" type="text" autocomplete="family-name" required />
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <label class="field-label" for="email">
+            {t("form.email", locale)} <span class="text-electric">*</span>
+            <span class="font-normal text-slate-muted">({t("form.required", locale)})</span>
+          </label>
+          <input class="field-input" id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+
+        <div class="mt-5">
+          <label class="field-label" for="message">
+            {t("form.message", locale)} <span class="text-electric">*</span>
+            <span class="font-normal text-slate-muted">({t("form.required", locale)})</span>
+          </label>
+          <textarea class="field-input min-h-[140px] resize-y" id="message" name="message" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary mt-7 w-full sm:w-auto">
+          {t("form.submit", locale)}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6"></path>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
